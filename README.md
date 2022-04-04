@@ -33,5 +33,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-If db wasn't updated, use `npx prisma db push` to update db with local schema.
-If you have db, use `npx prisma db pull to update local schema`.
+
+## DB
+Install prisma as dev dependency - `npm i -D prisma`.  
+If db wasn't updated, use `npx prisma db push` to update db with local schema.  
+If you have db, use `npx prisma db pull` to update local schema.  
+Install prisma client - `npm i @prisma/client`.
