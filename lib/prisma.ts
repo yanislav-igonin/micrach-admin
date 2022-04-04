@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client';
+export type { posts as Post } from '@prisma/client'
+export type { files as File } from '@prisma/client'
 
 let prisma: PrismaClient;
 

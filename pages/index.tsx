@@ -1,9 +1,39 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import db, { Post } from '../lib/prisma';
 
-const Home: NextPage = () => {
+interface WithStringDates {
+  created_at: string
+  updated_at: string | null;
+};
+
+type PostWithStringDates = Post & WithStringDates;
+
+interface Props {
+  threads: PostWithStringDates[]
+}
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const res = await db.posts.findMany({
+    where: {
+      is_parent: true,
+    },
+    orderBy: {
+      updated_at: 'desc',
+    },
+  });
+  const withStringDates = res.map((post) => ({
+    ...post,
+    created_at: (new Date(post.created_at)).toString(),
+    updated_at: post.updated_at ? (new Date(post.updated_at)).toString() : null,
+  })) as PostWithStringDates[];
+  return { props: { threads: withStringDates } }
+}
+
+const Home: NextPage<Props> = (props) => {
+  const { threads } = props;
   return (
     <div className={styles.container}>
       <Head>
@@ -16,6 +46,10 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+
+        <div>
+          {threads.map((thread) => (<p key={thread.id}>{thread.title}</p>))}
+        </div>
 
         <p className={styles.description}>
           Get started by editing{' '}
