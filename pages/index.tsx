@@ -23,6 +23,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
     orderBy: {
       updated_at: 'desc',
     },
+    take: 10,
+    skip: 0,
   });
   const withStringDates = res.map((post) => ({
     ...post,
