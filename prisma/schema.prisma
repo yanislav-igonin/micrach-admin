@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,39 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model files {
+  id         Int      @id @default(autoincrement())
+  post_id    Int
+  name       String   @db.VarChar
+  ext        String   @db.VarChar
+  size       Int
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  posts      posts    @relation(fields: [post_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model migrations {
+  id         Int
+  name       String   @db.VarChar
+  created_at DateTime @default(now()) @db.Timestamp(6)
+
+  @@ignore
+}
+
+model posts {
+  id          Int       @id @default(autoincrement())
+  is_parent   Boolean
+  parent_id   Int?
+  is_deleted  Boolean?  @default(false)
+  title       String    @db.VarChar
+  text        String
+  is_sage     Boolean
+  created_at  DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime? @db.Timestamptz(6)
+  is_archived Boolean?  @default(false)
+  posts       posts?    @relation("postsToposts_parent_id", fields: [parent_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  files       files[]
+  other_posts posts[]   @relation("postsToposts_parent_id")
 }
