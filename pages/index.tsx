@@ -2,14 +2,10 @@ import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import db, { Post } from '../lib/prisma';
+import db from '../lib/prisma';
+import type {PostWithStringDates} from '../utils';
+import {mapDateToString} from '../utils';
 
-interface WithStringDates {
-  created_at: string
-  updated_at: string | null;
-};
-
-type PostWithStringDates = Post & WithStringDates;
 
 interface Props {
   threads: PostWithStringDates[]
@@ -17,20 +13,12 @@ interface Props {
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const res = await db.posts.findMany({
-    where: {
-      is_parent: true,
-    },
-    orderBy: {
-      updated_at: 'desc',
-    },
+    where: { is_parent: true },
+    orderBy: { updated_at: 'desc' },
     take: 10,
     skip: 0,
   });
-  const withStringDates = res.map((post) => ({
-    ...post,
-    created_at: (new Date(post.created_at)).toString(),
-    updated_at: post.updated_at ? (new Date(post.updated_at)).toString() : null,
-  })) as PostWithStringDates[];
+  const withStringDates = mapDateToString(res)
   return { props: { threads: withStringDates } }
 }
 
