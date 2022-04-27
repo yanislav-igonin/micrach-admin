@@ -11,4 +11,5 @@ interface LoginResponse {
   }
 }
 
-export const login = (data: LoginRequest) => axios.post<LoginResponse>('/api/auth/login', data);
+export const login = (data: LoginRequest) => 
+  axios.post<LoginResponse>('/api/auth/signin/credentials', data);

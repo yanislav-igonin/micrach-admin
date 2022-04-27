@@ -14,7 +14,7 @@ export const getSession = (token: string): Session | null => {
     session.lastAccess = new Date();
   }
   return session || null;
-}
+};
 
 export const createSession = (username: string): Session => {
   const user = getUser(username);
@@ -29,11 +29,11 @@ export const createSession = (username: string): Session => {
   };
   sessions.set(token, session);
   return session;
-}
+};
 
 export const deleteSession = (username: string): void => {
   sessions.delete(username);
-}
+};
 
 export const refreshSession = (username: string): Session | null => {
   const session = getSession(username);
@@ -41,4 +41,4 @@ export const refreshSession = (username: string): Session | null => {
     return createSession(username);
   }
   return null;
-}
+};

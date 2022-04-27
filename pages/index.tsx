@@ -1,6 +1,6 @@
 import { TextInput } from '@mantine/core';
-import type { GetServerSideProps, GetServerSidePropsContext, NextPage, NextPageContext, Redirect } from 'next'
-import Head from 'next/head'
+import type { GetServerSideProps, GetServerSidePropsContext, NextPage, NextPageContext, Redirect } from 'next';
+import Head from 'next/head';
 import db from '../lib/prisma';
 import type {PostWithStringDates} from '../utils';
 import {mapDateToString} from '../utils';
@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps<Redirect> = async (ctx: GetS
   // });
   // const withStringDates = mapDateToString(res)
   // return { props: { threads: withStringDates } }
-}
+};
 
 const Home: NextPage<Props> = (props) => {
   // const { threads } = props;
@@ -37,7 +37,7 @@ const Home: NextPage<Props> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

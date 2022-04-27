@@ -1,5 +1,5 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { getUser } from "../../../storage/users";
 
 interface Credentials {
@@ -18,7 +18,7 @@ export default NextAuth({
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
         username: { label: "Username", type: "text" },
-        password: {  label: "Password", type: "password" }
+        password: { label: "Password", type: "password" }
       },
       async authorize(credentials: Credentials, req) {
         const { username, password } = credentials;
@@ -31,8 +31,8 @@ export default NextAuth({
         if (user.password !== password) {
           return null;
         }
-  
-        return user
+
+        return user;
       }
     })
   ],
@@ -43,4 +43,4 @@ export default NextAuth({
     // verifyRequest: '/auth/verify-request', // (used for check email message)
     // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
   }
-})
+});
