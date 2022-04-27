@@ -1,4 +1,6 @@
-export interface User {
+import type { User as NextAuthUser } from "next-auth";
+
+export interface User extends Omit<NextAuthUser, 'id'> {
   username: string;
   password: string;
 }
@@ -13,7 +15,7 @@ const users = new Map<string, User>([
 
 export const getUser = (username: string): User | null => {
   return users.get(username) || null;
-}
+};
 
 export const comparePassword = (username: string, password: string): boolean => {
   const user = getUser(username);
@@ -21,4 +23,4 @@ export const comparePassword = (username: string, password: string): boolean => 
     return false;
   }
   return user.password === password;
-}
+};

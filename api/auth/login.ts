@@ -11,5 +11,9 @@ interface LoginResponse {
   }
 }
 
-export const login = (data: LoginRequest) => 
-  axios.post<LoginResponse>('/api/auth/signin/credentials', data);
+export const login = (data: LoginRequest) => {
+  const formdata = new FormData();
+  formdata.append('username', data.username);
+  formdata.append('password', data.password);
+  axios.post<LoginResponse>('/api/auth/callback/credentials', formdata);
+};
