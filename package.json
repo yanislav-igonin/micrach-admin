@@ -16,7 +16,6 @@
     "@prisma/client": "^3.11.1",
     "axios": "^0.27.2",
     "next": "12.1.4",
-    "next-auth": "^4.3.3",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-query": "^3.38.0"
