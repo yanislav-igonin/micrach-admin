@@ -1,4 +1,4 @@
-import { User, getUser } from "./users";
+import { User, getUser } from './users';
 
 export interface Session {
   token: string;
@@ -19,7 +19,7 @@ export const getSession = (token: string): Session | null => {
 export const createSession = (username: string): Session => {
   const user = getUser(username);
   if (!user) {
-    throw new Error("User not found");
+    throw new Error('User not found');
   }
   const token = Math.random().toString(36).substring(2);
   const session = {

@@ -1,4 +1,4 @@
-import { Post } from "../lib/prisma";
+import { Post } from '../lib/prisma';
 
 interface WithStringDates {
   created_at: string
@@ -13,4 +13,4 @@ export const mapDateToString = (posts: Post[]): PostWithStringDates[] => {
     created_at: (new Date(post.created_at)).toString(),
     updated_at: post.updated_at ? (new Date(post.updated_at)).toString() : null,
   })) as PostWithStringDates[];
-}
+};

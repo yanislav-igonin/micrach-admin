@@ -1,4 +1,3 @@
-
 export interface User {
   username: string;
   password: string;
@@ -9,7 +8,7 @@ const superadmin: User = {
   password: process.env.SUPERADMIN_PASSWORD!,
 };
 const users = new Map<string, User>([
-  [superadmin.username, superadmin],
+  [ superadmin.username, superadmin ],
 ]);
 
 export const getUser = (username: string): User | null => {

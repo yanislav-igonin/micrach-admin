@@ -2,8 +2,8 @@ import { TextInput } from '@mantine/core';
 import type { GetServerSideProps, GetServerSidePropsContext, NextPage, NextPageContext, Redirect } from 'next';
 import Head from 'next/head';
 import db from '../lib/prisma';
-import type {PostWithStringDates} from '../utils';
-import {mapDateToString} from '../utils';
+import type { PostWithStringDates } from '../utils';
+import { mapDateToString } from '../utils';
 
 interface Props {
   // threads: PostWithStringDates[]
@@ -15,8 +15,8 @@ export const getServerSideProps: GetServerSideProps<Redirect> = async (ctx: GetS
     redirect: {
       destination: '/auth/login',
       permanent: false,
-    }
-  }; 
+    },
+  };
   // const res = await db.posts.findMany({
   //   where: { is_parent: true },
   //   orderBy: { updated_at: 'desc' },

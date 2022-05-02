@@ -1,16 +1,16 @@
-import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
+import { withIronSessionApiRoute, withIronSessionSsr } from 'iron-session/next';
 import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
   NextApiHandler,
-} from "next";
+} from 'next';
 
 const sessionOptions = {
-  password: "complex_password_at_least_32_characters_long", // TODO: change to .env
-  cookieName: "sid",
+  password: 'complex_password_at_least_32_characters_long', // TODO: change to .env
+  cookieName: 'sid',
   // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
   cookieOptions: {
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.NODE_ENV === 'production',
   },
 };
 
@@ -29,7 +29,7 @@ export function withSessionSsr<
   return withIronSessionSsr(handler, sessionOptions);
 }
 
-declare module "iron-session" {
+declare module 'iron-session' {
   interface IronSessionData {
     user?: {
       username: string;
