@@ -1,16 +1,15 @@
-import type { User as NextAuthUser } from "next-auth";
 
-export interface User extends Omit<NextAuthUser, 'id'> {
+export interface User {
   username: string;
   password: string;
 }
 
-const SUPERADMIN: User = {
+const superadmin: User = {
   username: process.env.SUPERADMIN_USERNAME!,
   password: process.env.SUPERADMIN_PASSWORD!,
 };
 const users = new Map<string, User>([
-  [process.env.SUPERADMIN_USERNAME!, SUPERADMIN],
+  [superadmin.username, superadmin],
 ]);
 
 export const getUser = (username: string): User | null => {

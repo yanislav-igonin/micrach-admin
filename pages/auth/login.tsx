@@ -1,19 +1,18 @@
 import { TextInput, Button } from "@mantine/core";
 import { useForm } from '@mantine/form';
-import { NextRouter, useRouter } from "next/router";
+import Router  from "next/router";
+import { login as loginApi, LoginRequest } from 'lib/api/auth/login';
 
-interface LoginRequest {
-  username: string;
-  password: string;
-}
-
-const login = async (data: LoginRequest, router: NextRouter) => {
-
-  // await router.push(res.url!, undefined, { shallow: true });
+const login = async (data: LoginRequest) => {
+  try {
+    await loginApi(data);
+    await Router.push('/dashboard');
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const Login = () => {
-  const router = useRouter();
   const form = useForm({
     initialValues: {
       username: '',
@@ -23,7 +22,7 @@ const Login = () => {
 
   return (
     <main>
-      <form onSubmit={form.onSubmit((values) => login(values, router))}>
+      <form onSubmit={form.onSubmit((values) => login(values))}>
         <TextInput placeholder='Login' {...form.getInputProps('username')} />
         <TextInput placeholder='Password' type='password' {...form.getInputProps('password')} />
         <Button type='submit'>Login</Button>
