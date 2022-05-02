@@ -1,3 +1,4 @@
-import { Dashboard } from './dashboard';
+import { Dashboard, getServerSideProps } from './dashboard';
 
+export { getServerSideProps };
 export default Dashboard;
