@@ -6,6 +6,7 @@
     "indent": ["error", 2],
     "object-curly-spacing":  ["error", "always"],
     "array-bracket-spacing": ["error", "always"],
+    "space-infix-ops": ["error"],
     "comma-dangle": ["error", "always-multiline"],
     "no-trailing-spaces": ["error"],
     "quotes": ["error", "single"],
