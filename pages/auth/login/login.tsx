@@ -17,7 +17,7 @@ const login = async (data: LoginRequest) => {
   }
 };
 
-const Login = () => {
+export const Login = () => {
   const form = useForm({
     initialValues: {
       username: '',
@@ -37,5 +37,3 @@ const Login = () => {
     </main>
   );
 };
-
-export default Login;
