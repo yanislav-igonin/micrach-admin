@@ -1,7 +1,7 @@
 import { withSessionSsr } from 'lib/session';
 import db from 'lib/prisma';
-import type { PostWithStringDates } from 'utils';
-import { mapDateToString } from 'utils';
+import type { PostWithStringDates } from 'lib/utils';
+import { mapDateToString } from 'lib/utils';
 
 interface Props {
   threads: PostWithStringDates[]
