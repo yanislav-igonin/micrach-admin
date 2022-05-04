@@ -2,6 +2,7 @@ import { withSessionSsr } from 'lib/session';
 import db from 'lib/prisma';
 import type { PostWithStringDates } from 'lib/utils';
 import { mapDateToString } from 'lib/utils';
+import { Layout } from 'lib/components/Layout';
 
 interface Props {
   threads: PostWithStringDates[]
@@ -24,11 +25,10 @@ export const getServerSideProps = withSessionSsr(async (ctx) => {
 export const Dashboard = (props: Props) => {
   const { threads } = props;
   return (
-    <main>
-      вилкой чисти раз раз раз
+    <Layout>
       <div>
         {threads.map((thread) => (<p key={thread.id}>{thread.title}</p>))}
       </div>
-    </main>
+    </Layout>
   );
 };
