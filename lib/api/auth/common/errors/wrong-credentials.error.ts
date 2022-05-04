@@ -1,4 +1,4 @@
-export class WrongCredentialsError extends Error {
+export class WrongCredentialsError {
   error = {
     message: 'Wrong credentials',
   };

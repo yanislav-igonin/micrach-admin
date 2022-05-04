@@ -1,8 +1,5 @@
 import { withSessionSsr } from 'lib/session';
 import type { GetServerSideProps, GetServerSidePropsContext, NextPage, Redirect } from 'next';
-// import db from '../lib/prisma';
-// import type { PostWithStringDates } from '../utils';
-// import { mapDateToString } from '../utils';
 
 interface Props {
   redirect: string
@@ -16,10 +13,7 @@ export const getServerSideProps: GetServerSideProps<Redirect> =
   });
 
 const Home: NextPage<Props> = () => {
-  return (
-    <main>
-    </main>
-  );
+  return (<></>);
 };
 
 export default Home;
