@@ -1,4 +1,4 @@
-import { withSessionSsr } from 'lib/session';
+import { withSessionSsr } from '@session';
 import type { GetServerSideProps, GetServerSidePropsContext, NextPage, Redirect } from 'next';
 
 interface Props {

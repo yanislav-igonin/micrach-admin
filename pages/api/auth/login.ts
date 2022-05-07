@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { WrongCredentialsError } from 'lib/api/auth/common/errors/wrong-credentials.error';
+import { WrongCredentialsError } from 'lib/dto/errors/wrong-credentials.error';
 import { getUser } from 'lib/storage/users';
 import { withSessionRoute } from 'lib/session';
-import { OkRespoonse } from 'lib/api/auth/common/responses/ok.response';
+import { OkRespoonse } from 'lib/dto/responses/ok.response';
 
 const login = async (req: NextApiRequest, res: NextApiResponse) => {
   const { body } = req;

@@ -1,4 +1,4 @@
-import type { Post } from 'lib/prisma';
+import type { Post } from '@db';
 
 interface WithStringDates {
   created_at: string

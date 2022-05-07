@@ -1,8 +1,8 @@
-import { TextInput, Button, Center, Container } from '@mantine/core';
+import { TextInput, Button, Center } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Router  from 'next/router';
 import { showNotification } from '@mantine/notifications';
-import { login as loginApi, LoginRequest } from 'lib/api/auth/login';
+import { login as loginApi, LoginRequest } from '@api/auth/login';
 import { AxiosError } from 'axios';
 import classes from './login.module.css';
 

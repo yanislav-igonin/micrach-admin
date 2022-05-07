@@ -15,6 +15,16 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./",
+    "paths": {
+      "@api/*": ["lib/api/*"],
+      "@components/*": ["lib/components/*"],
+      "@utils/*": ["lib/utils/*"],
+      "@config": ["lib/config"],
+      "@db": ["lib/db/prisma"],
+      "@session": ["lib/session"],
+      "@errors": ["lib/dto/errors"],
+      "@responses": ["lib/dto/responses"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
