@@ -18,7 +18,7 @@
     "paths": {
       "@api/*": ["lib/api/*"],
       "@components/*": ["lib/components/*"],
-      "@utils/*": ["lib/utils/*"],
+      "@utils": ["lib/utils"],
       "@config": ["lib/config"],
       "@db": ["lib/db/prisma"],
       "@session": ["lib/session"],

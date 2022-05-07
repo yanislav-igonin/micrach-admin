@@ -1,10 +1,9 @@
-import { withSessionSsr } from 'lib/session';
-import db from 'lib/db/prisma';
-import type { PostWithStringDates } from 'lib/utils';
-import { mapDateToString } from 'lib/utils';
-import { Layout } from 'lib/components/Layout';
 import Link from 'next/link';
-import { LOGIN_PAGE, THREAD_PAGE } from '@utils/pages';
+import { withSessionSsr } from '@session';
+import db from '@db';
+import type { PostWithStringDates } from '@utils';
+import { mapDateToString, LOGIN_PAGE, THREAD_PAGE } from '@utils';
+import { Layout } from '@components/Layout';
 
 interface Props {
   threads: PostWithStringDates[]
@@ -30,7 +29,9 @@ export const Dashboard = (props: Props) => {
     <Layout>
       <div>
         {threads.map((thread) => (
-          <Link href={THREAD_PAGE(thread.id)} key={thread.id}>{thread.title}</Link>
+          <div key={thread.id}>
+            <Link href={THREAD_PAGE(thread.id)}>{thread.title}</Link>
+          </div>
         ))}
       </div>
     </Layout>
