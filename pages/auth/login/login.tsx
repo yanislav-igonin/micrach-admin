@@ -29,8 +29,8 @@ export const Login = () => {
     <main>
       <Center className={classes['login-page-container']}>
         <form className={classes['login-form-container']} onSubmit={form.onSubmit((values) => login(values))}>
-          <TextInput mb='md' placeholder='Login' {...form.getInputProps('username')} />
-          <TextInput mb='md' placeholder='Password' type='password' {...form.getInputProps('password')} />
+          <TextInput mb='sm' placeholder='Login' {...form.getInputProps('username')} />
+          <TextInput mb='sm' placeholder='Password' type='password' {...form.getInputProps('password')} />
           <Button type='submit'>Login</Button>
         </form>
       </Center>
